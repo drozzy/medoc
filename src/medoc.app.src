@@ -1,0 +1,15 @@
+{application, medoc,
+ [{description, "Runs edoc on multiple apps and stitches the results together"},
+  {vsn, "1.0.0"},
+  {registered, []},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {maintainers, []},
+  {licenses, []},
+  {links, []}
+ ]}.
