@@ -3,7 +3,28 @@ medoc
 
 Runs edoc on multiple apps and stitches the results together.
 
-The regular edoc command does not build the proper table of contents. This 
+If you have an OTP layout like this:
+
+foo/
+  - apps/
+    - bar1/
+      - src/
+    - bar2
+      - src/
+
+you can generate the edoc documentation for all your apps with `rebar3 medoc`.
+The resulting html documention can be found under `foo/doc`:
+
+foo/
+  - doc/
+    - index.html
+    - bar1_app.html
+    - bar2_app.html
+    - ...
+
+Description
+------------
+The regular `rebar3 edoc` command does not build the proper table of contents. This 
 plugin fixes that, by first running edoc normally, and then rebuilding
 the html table of contents in place.
 
