@@ -47,8 +47,7 @@ Then just call your plugin directly in an existing application:
 
     $ rebar3 medoc
 
- Now you should be able to serve browse to `doc/index.html` and
- see your complete documentation.
+ Now you should be able to see your complete documentation at `doc/index.html`.
 
 
 Notes
