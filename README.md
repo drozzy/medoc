@@ -1,6 +1,8 @@
 medoc
 =====
 
+![Icon](icon.png)
+
 Runs edoc on multiple apps and stitches the results together.
 
 If you have an OTP layout like this:
