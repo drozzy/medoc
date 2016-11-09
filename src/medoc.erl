@@ -52,7 +52,7 @@ copy_overview(State) ->
 			ok; % do nothing
 		MainApp ->
 			io:format("Main app supplied: ~p. Copying overview.~n", [MainApp]),
-			Overview = filename:join("apps", MainApp, ?OVERVIEW_SUMMARY),
+			Overview = filename:join("apps", atom_to_list(MainApp), ?OVERVIEW_SUMMARY),
 			Dest = filename:join(?DOC_DIR, ?OVERVIEW_SUMMARY),
 			file:copy(Overview, Dest)
 	end,
