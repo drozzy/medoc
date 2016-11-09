@@ -45,13 +45,12 @@ do(State) ->
 %% Copy the overview summary from the 'main' app. 
 copy_overview(State) ->
 	{Args, _} = rebar_state:command_parsed_args(State),
-	io:format("Args is: ~p~n", [Args]),
 	case proplists:get_value(main, Args) of
 		undefined -> 
 			io:format("No main app supplied. Not overwritting overview."),
 			ok; % do nothing
 		MainApp ->
-			io:format("Main app supplied: ~p. Copying overview.~n", [MainApp]),
+			io:format("Main app supplied: ~p. Using its overview as the doc's review.~n", [MainApp]),
 			Overview = filename:join(["apps", atom_to_list(MainApp), ?DOC_DIR, ?OVERVIEW_SUMMARY]),
 			Dest = filename:join(?DOC_DIR, ?OVERVIEW_SUMMARY),
 			file:copy(Overview, Dest)
