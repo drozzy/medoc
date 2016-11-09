@@ -55,7 +55,7 @@ Call your plugin directly in an existing application:
 
  Now you should be able to see your complete documentation at `doc/index.html`.
 
- The flag `-m' is optional, but if you have more than one app in your `apps`
+ The flag `-m` is optional, but if you have more than one app in your `apps`
  folder, it is not clear which app is the "main" one. Supplying the
  main app via `-m` parameter will allow medoc to use that app's
  overview as the front page of the documentation.
