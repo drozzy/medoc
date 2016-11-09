@@ -24,7 +24,7 @@ init(State) ->
 			{bare, true},
 			{deps, ?DEPS},
             {example, "rebar3 medoc -m myapp"}, % How to use the plugin
-            {opts, [{main, $m, "main", atom, "Main app to use overview text from"}]},                   % list of options understood by the plugin
+            {opts, [{main, $m, "main", atom, "This will use this app's overview as the overview for the doc."}]},                   % list of options understood by the plugin
 			{short_desc, "Generates edoc for all the apps"},
 			{desc, "Runs edoc and then recreates the table of contents"
 			 	" to include all the applications."}
@@ -52,7 +52,7 @@ copy_overview(State) ->
 			ok; % do nothing
 		MainApp ->
 			io:format("Main app supplied: ~p. Copying overview.~n", [MainApp]),
-			Overview = filename:join("apps", atom_to_list(MainApp), ?DOC_DIR, ?OVERVIEW_SUMMARY),
+			Overview = filename:join(["apps", atom_to_list(MainApp), ?DOC_DIR, ?OVERVIEW_SUMMARY]),
 			Dest = filename:join(?DOC_DIR, ?OVERVIEW_SUMMARY),
 			file:copy(Overview, Dest)
 	end,
