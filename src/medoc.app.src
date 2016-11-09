@@ -8,8 +8,7 @@
    ]},
   {env,[]},
   {modules, []},
-
-  {maintainers, []},
-  {licenses, []},
-  {links, []}
+  {maintainers, ["Andriy Drozdyuk"]},
+  {licenses, ["MPLv2"]},
+  {links, [{"Github", "https://github.com/drozzy/medoc"}]}
  ]}.

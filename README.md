@@ -1,6 +1,8 @@
 medoc
 =====
 
+![Icon](icon.png)
+
 Runs edoc on multiple apps and stitches the results together.
 
 If you have an OTP layout like this:
@@ -32,8 +34,8 @@ To see what problem this solves, see https://github.com/erlang/rebar3/issues/130
 and http://stackoverflow.com/questions/39043889/rebar3-generate-edoc-for-multiple-apps
 
 
-Use
----
+Install
+--------
 
 
 Add the plugin to your rebar config:
@@ -42,7 +44,11 @@ Add the plugin to your rebar config:
         { medoc, ".*", {git, "git@github.com:drozzy/medoc.git", {tag, "1.0.0"}}}
     ]}.
 
-Then just call your plugin directly in an existing application:
+Alternatively use the [hex.pm medoc](https://hex.pm/packages/medoc) package.
+
+Usage
+-----
+Call your plugin directly in an existing application:
 
 
     $ rebar3 medoc
