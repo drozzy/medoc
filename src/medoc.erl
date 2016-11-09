@@ -47,10 +47,10 @@ copy_overview(State) ->
 	{Args, _} = rebar_state:command_parsed_args(State),
 	case proplists:get_value(main, Args) of
 		undefined -> 
-			io:format("No main app supplied. Consider supplying it via the -m parameter. Not overwritting overview."),
+			io:format("No main app supplied. Consider supplying it via the -m parameter if you have more than one app in your /apps directory."),
 			ok; % do nothing
 		MainApp ->
-			io:format("Main app supplied: ~p. Using its overview as the doc's review.~n", [MainApp]),
+			io:format("Main app supplied: ~p. Using its overview as the doc's front page.~n", [MainApp]),
 			Overview = filename:join(["apps", atom_to_list(MainApp), ?DOC_DIR, ?OVERVIEW_SUMMARY]),
 			Dest = filename:join(?DOC_DIR, ?OVERVIEW_SUMMARY),
 			file:copy(Overview, Dest)
