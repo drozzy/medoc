@@ -44,7 +44,7 @@ do(State) ->
 
 %% Copy the overview summary from the 'main' app. 
 copy_overview(State) ->
-	Args = rebar_state:command_parsed_args(State),
+	{Args, _} = rebar_state:command_parsed_args(State),
 	io:format("Args is: ~p~n", [Args]),
 	case proplists:get_value(main, Args) of
 		undefined -> 
