@@ -11,6 +11,7 @@
 -define(TOC_PLACEHOLDER, "{toc}").
 -define(MODULE_PLACEHOLDER, "{module}").
 -define(TOC_FILE, "modules-frame.html").
+-define(OVERVIEW_SUMMARY, "overview-summary.html").
 
 %% ==================================================
 %% PUBLIC API
@@ -39,6 +40,21 @@ do(State) ->
 	Modules = get_modules(?DOC_DIR),
 	Html = build_toc(Modules),
 	ok = write_toc(Html),
+	copy_overview(State). 
+
+%% Copy the overview summary from the 'main' app. 
+copy_overview(State) ->
+	Args = rebar_state:command_parsed_args(State),
+	case proplists:get_value(main, Args) of
+		undefined -> 
+			io:format("No main app supplied. Not overwritting overview."),
+			ok; % do nothing
+		MainApp ->
+			io:format("Main app supplied: ~p. Copying overview.~n", [MainApp]),
+			Overview = filename:join("apps", MainApp, ?OVERVIEW_SUMMARY),
+			Dest = filename:join(?DOC_DIR, ?OVERVIEW_SUMMARY),
+			file:copy(Overview, Dest)
+	end,
 	{ok, State}.
 
 get_modules(Path) ->
