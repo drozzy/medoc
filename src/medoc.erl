@@ -47,7 +47,7 @@ copy_overview(State) ->
 	{Args, _} = rebar_state:command_parsed_args(State),
 	case proplists:get_value(main, Args) of
 		undefined -> 
-			io:format("No main app supplied. Not overwritting overview."),
+			io:format("No main app supplied. Consider supplying it via the -m parameter. Not overwritting overview."),
 			ok; % do nothing
 		MainApp ->
 			io:format("Main app supplied: ~p. Using its overview as the doc's review.~n", [MainApp]),
