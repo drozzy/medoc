@@ -23,8 +23,8 @@ init(State) ->
 			{module, ?MODULE},
 			{bare, true},
 			{deps, ?DEPS},
-			{example, "rebar medoc"},
-			{opts, []},
+            {example, "rebar3 medoc -m myapp"}, % How to use the plugin
+            {opts, [{main, $m, "main", undefined, "Main app to use overview text from"}]},                   % list of options understood by the plugin
 			{short_desc, "Generates edoc for all the apps"},
 			{desc, "Runs edoc and then recreates the table of contents"
 			 	" to include all the applications."}
