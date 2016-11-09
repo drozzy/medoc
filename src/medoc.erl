@@ -11,7 +11,6 @@
 -define(TOC_PLACEHOLDER, "{toc}").
 -define(MODULE_PLACEHOLDER, "{module}").
 -define(TOC_FILE, "modules-frame.html").
--define(OVERVIEW_SUMMARY, "overview-summary.html").
 
 %% ==================================================
 %% PUBLIC API
@@ -23,8 +22,8 @@ init(State) ->
 			{module, ?MODULE},
 			{bare, true},
 			{deps, ?DEPS},
-            {example, "rebar3 medoc -m myapp"}, % How to use the plugin
-            {opts, [{main, $m, "main", atom, "This will use this app's overview as the overview for the doc."}]},                   % list of options understood by the plugin
+			{example, "rebar medoc"},
+			{opts, []},
 			{short_desc, "Generates edoc for all the apps"},
 			{desc, "Runs edoc and then recreates the table of contents"
 			 	" to include all the applications."}
@@ -40,21 +39,6 @@ do(State) ->
 	Modules = get_modules(?DOC_DIR),
 	Html = build_toc(Modules),
 	ok = write_toc(Html),
-	copy_overview(State). 
-
-%% Copy the overview summary from the 'main' app. 
-copy_overview(State) ->
-	{Args, _} = rebar_state:command_parsed_args(State),
-	case proplists:get_value(main, Args) of
-		undefined -> 
-			io:format("No main app supplied. Consider supplying it via the -m parameter if you have more than one app in your /apps directory."),
-			ok; % do nothing
-		MainApp ->
-			io:format("Main app supplied: ~p. Using its overview as the doc's front page.~n", [MainApp]),
-			Overview = filename:join(["apps", atom_to_list(MainApp), ?DOC_DIR, ?OVERVIEW_SUMMARY]),
-			Dest = filename:join(?DOC_DIR, ?OVERVIEW_SUMMARY),
-			file:copy(Overview, Dest)
-	end,
 	{ok, State}.
 
 get_modules(Path) ->

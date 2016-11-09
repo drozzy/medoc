@@ -15,7 +15,8 @@ init(State) ->
             {module, ?MODULE},            % The module implementation of the task
             {bare, true},                 % The task can be run by the user, always true
             {deps, ?DEPS},                % The list of dependencies
-            {example, "rebar medoc"},
+            {example, "rebar3 medoc"}, % How to use the plugin
+            {opts, []},                   % list of options understood by the plugin
             {short_desc, "Runs edoc on multiple apps and stitches the results together"},
             {desc, "Runs edoc on multiple apps and stitches the results together"}
     ]),
