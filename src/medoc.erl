@@ -30,7 +30,8 @@ init(State) ->
 		]),
 	%% Put all the docs into single dir
 	% {edoc_opts, [{dir, "doc"}]}.
-	State2 = rebar_state:set(State, edoc_opts, [{dir, ?DOC_DIR}]),
+	EDocOpts = rebar_state:get(State, edoc_opts),
+	State2 = rebar_state:set(State, edoc_opts, [{dir, ?DOC_DIR} | proplists:delete(dir, EDocOpts)]),
 	{ok, rebar_state:add_provider(State2, Provider)}.
 
 -spec do(rebar_state:t()) -> {ok, rebar_state:t()} | {error, string()}.
